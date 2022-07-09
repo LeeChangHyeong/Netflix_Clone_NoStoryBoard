@@ -32,6 +32,8 @@ class HomeViewController: UIViewController {
         // Datasource는 데이터 모델의 Delegate로, 테이블뷰의 시각적 모양에 대한 최소한의 정보를 제공합니다. Delegate와 비슷하게 처리 해야 할 일 중 일부를 다른 객체에 넘겨서 작업을 대신해주는 역할을 합니다.
         // TableView 객체에 섹션의 수와 행의 수를 알려주며, 행의 삽입, 삭제 및 재정렬하는 기능을 선택적으로 구현할 수 있습니다.
         homeFeedTable.dataSource = self
+        
+        homeFeedTable.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 450))
     }
     
     override func viewDidLayoutSubviews() {
@@ -45,8 +47,14 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: 행 갯수 지정
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 20
+    }
+    
+    
+    // 한 행에 몇개의 섹션
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
     }
      
     // MARK: dequeueReusableCell 쓰는 이유
